@@ -161,8 +161,10 @@ namespace Riesgos
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
-
+            if (System.Text.RegularExpressions.Regex.IsMatch(txt_prob.Text, "[^1-5]"))
+            {
+                txt_prob.Text = txt_prob.Text.Remove(txt_prob.Text.Length - 1);
+            }
             using (SqlConnection conn = new SqlConnection(Program.cnn67))
             {
                 string query = "select * from M_RIESGO_analisis where probabilidad='" + txt_prob.Text + "' and impacto='" + txt_impacto.Text + "';";
@@ -257,77 +259,47 @@ namespace Riesgos
         }
 
 
-        private void txt_prob_Validating(object sender, CancelEventArgs e)
-        {
-
-           
-                
-        }
-
-        private void txt_impacto_Validating(object sender, CancelEventArgs e)
-        {
-            
-        }
-
         private void txt_prob_Validating_1(object sender, CancelEventArgs e)
         {
-        //    if (txt_prob.Text == "1" || txt_prob.Text == "2" || txt_prob.Text == "3" || txt_prob.Text == "4" || txt_prob.Text == "5")
-        //    {
-
-        //    }
-        //    else
-        //    {
-        //        txt_prob.Text = "";
-        //        e.Cancel = true;
-        //    }
         }
 
         private void txt_impacto_Validating_1(object sender, CancelEventArgs e)
         {
-            //if (txt_prob.Text == "1" || txt_prob.Text == "2" || txt_prob.Text == "3" || txt_prob.Text == "4" || txt_prob.Text == "5")
-            //{
-
-            //}
-            //else
-            //{
-            //    txt_prob.Text = "";
-            //    e.Cancel = true;
-            //}
         }
 
         private void txt_actividad_TextChanged(object sender, EventArgs e)
         {
-            txt_actividad.Text = txt_actividad.Text.ToUpper().ToString();
+            txt_actividad.CharacterCasing = CharacterCasing.Upper;
         }
 
         private void txt_propuesta_TextChanged(object sender, EventArgs e)
         {
-            txt_propuesta.Text = txt_propuesta.Text.ToUpper().ToString();
+            txt_propuesta.CharacterCasing = CharacterCasing.Upper;
         }
 
         private void txt_fuente_TextChanged(object sender, EventArgs e)
         {
-            txt_fuente.Text = txt_fuente.Text.ToUpper().ToString();
+            txt_fuente.CharacterCasing = CharacterCasing.Upper;
         }
 
         private void txt_indicador_TextChanged(object sender, EventArgs e)
         {
-            txt_indicador.Text = txt_indicador.Text.ToUpper().ToString();
+            txt_indicador.CharacterCasing = CharacterCasing.Upper;
         }
 
         private void txt_evento_TextChanged(object sender, EventArgs e)
         {
-            txt_evento.Text = txt_evento.Text.ToUpper().ToString();
+            txt_evento.CharacterCasing = CharacterCasing.Upper;
         }
 
         private void txt_causas_TextChanged(object sender, EventArgs e)
         {
-            txt_causas.Text = txt_causas.Text.ToUpper().ToString();
+            txt_causas.CharacterCasing = CharacterCasing.Upper;
         }
 
         private void txt_consecuencias_TextChanged(object sender, EventArgs e)
         {
-            txt_consecuencias.Text = txt_consecuencias.Text.ToUpper().ToString();
+            txt_consecuencias.CharacterCasing = CharacterCasing.Upper;
         }
         void limpiar()
         {
@@ -341,6 +313,21 @@ namespace Riesgos
             txt_prob.Text = "";
             txt_impacto.Text = "";
             lbl_nivel.Text = "";
+        }
+
+        private void FormMatriz_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormMenuPrincipal promo = new FormMenuPrincipal();
+            promo.Text = FormLogin.nom_unidad;
+            promo.StartPosition = FormStartPosition.CenterScreen;
+            promo.Show();
+
+            this.Close();
+        }
+
+        private void FormMatriz_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Application.Exit();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -366,7 +353,10 @@ namespace Riesgos
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            
+            if (System.Text.RegularExpressions.Regex.IsMatch(txt_impacto.Text, "[^1-5]"))
+            {
+                txt_impacto.Text = txt_impacto.Text.Remove(txt_impacto.Text.Length - 1);
+            }
             using (SqlConnection conn = new SqlConnection(Program.cnn67))
             {
                 string query = "select * from M_RIESGO_analisis where probabilidad='" + txt_prob.Text + "' and impacto='" + txt_impacto.Text + "';";
@@ -383,17 +373,18 @@ namespace Riesgos
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection(Program.cnn67))
-            {
-                string query = "select * from M_RIESGO_actividad where actividad='" + nombre_actividad + "';";
-                SqlCommand cmd0 = new SqlCommand(query, conn);
-                SqlDataAdapter da = new SqlDataAdapter(cmd0);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                id_actividad = dt.Rows[0]["id_actividad"].ToString();
+            if (txt_evento.Text.Length != 0 && txt_causas.Text.Length != 0 && txt_consecuencias.Text.Length != 0 && txt_prob.Text.Length != 0 && txt_impacto.Text.Length != 0 && txt_propuesta.Text.Length != 0) {
+                using (SqlConnection conn = new SqlConnection(Program.cnn67))
+                {
+                    string query = "select * from M_RIESGO_actividad where actividad='" + nombre_actividad + "';";
+                    SqlCommand cmd0 = new SqlCommand(query, conn);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd0);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    id_actividad = dt.Rows[0]["id_actividad"].ToString();
 
 
-                DialogResult dialogResult = MessageBox.Show("¿Esta seguro ingresar el registro?", FormLogin.nom_unidad, MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("¿Esta seguro ingresar el registro?", FormLogin.nom_unidad, MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         SqlCommand cmd = conn.CreateCommand();
@@ -412,15 +403,19 @@ namespace Riesgos
 
                         cmd.ExecuteNonQuery();
                         conn.Close();
-
-                        //DialogResult dialogResult2 = MessageBox.Show("¿Desea ingresar la medicion de la actividad?", FormLogin.nom_unidad, MessageBoxButtons.YesNo);
-                        //if (dialogResult == DialogResult.Yes)
-                        //{ 
-
-                        //}
+                        limpiar();
+                        cmb_proceso.Enabled = true;
+                        txt_actividad.Enabled = true;
+                        lb_procedimiento.Enabled = true;
+                        ocultar_llenado();
+                        btn_actividad.Text = "Crear Actividad";
                     }
+                }
             }
-        
+            else
+            {
+                MessageBox.Show("Llene los campos");
+            }
         }
 
     }

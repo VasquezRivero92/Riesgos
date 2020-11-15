@@ -72,6 +72,7 @@
             this.Controls.Add(this.txt_nombre);
             this.Name = "FormMenuPrincipal";
             this.Text = "FormMenuPrincipal";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMenuPrincipal_FormClosed);
             this.Load += new System.EventHandler(this.FormMenuPrincipal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

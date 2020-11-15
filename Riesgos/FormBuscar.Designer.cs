@@ -51,16 +51,17 @@
             // dtg_actividad
             // 
             this.dtg_actividad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtg_actividad.Location = new System.Drawing.Point(59, 176);
+            this.dtg_actividad.Location = new System.Drawing.Point(63, 118);
             this.dtg_actividad.Name = "dtg_actividad";
             this.dtg_actividad.Size = new System.Drawing.Size(866, 203);
             this.dtg_actividad.TabIndex = 0;
+            this.dtg_actividad.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_actividad_CellClick);
             // 
             // cmb_proceso
             // 
             this.cmb_proceso.Enabled = false;
             this.cmb_proceso.FormattingEnabled = true;
-            this.cmb_proceso.Location = new System.Drawing.Point(241, 58);
+            this.cmb_proceso.Location = new System.Drawing.Point(73, 63);
             this.cmb_proceso.Name = "cmb_proceso";
             this.cmb_proceso.Size = new System.Drawing.Size(227, 21);
             this.cmb_proceso.TabIndex = 12;
@@ -80,9 +81,9 @@
             // 
             this.cmb_procesamiento.Enabled = false;
             this.cmb_procesamiento.FormattingEnabled = true;
-            this.cmb_procesamiento.Location = new System.Drawing.Point(506, 58);
+            this.cmb_procesamiento.Location = new System.Drawing.Point(338, 63);
             this.cmb_procesamiento.Name = "cmb_procesamiento";
-            this.cmb_procesamiento.Size = new System.Drawing.Size(227, 21);
+            this.cmb_procesamiento.Size = new System.Drawing.Size(322, 21);
             this.cmb_procesamiento.TabIndex = 15;
             // 
             // chk_procesamiento
@@ -98,7 +99,7 @@
             // chk_riesgo
             // 
             this.chk_riesgo.AutoSize = true;
-            this.chk_riesgo.Location = new System.Drawing.Point(45, 10);
+            this.chk_riesgo.Location = new System.Drawing.Point(60, 10);
             this.chk_riesgo.Name = "chk_riesgo";
             this.chk_riesgo.Size = new System.Drawing.Size(15, 14);
             this.chk_riesgo.TabIndex = 18;
@@ -109,7 +110,7 @@
             // 
             this.cmb_riesgo.Enabled = false;
             this.cmb_riesgo.FormattingEnabled = true;
-            this.cmb_riesgo.Location = new System.Drawing.Point(419, 430);
+            this.cmb_riesgo.Location = new System.Drawing.Point(420, 357);
             this.cmb_riesgo.Name = "cmb_riesgo";
             this.cmb_riesgo.Size = new System.Drawing.Size(100, 21);
             this.cmb_riesgo.TabIndex = 20;
@@ -118,7 +119,7 @@
             // gp_proceso
             // 
             this.gp_proceso.Controls.Add(this.chk_proceso);
-            this.gp_proceso.Location = new System.Drawing.Point(231, 28);
+            this.gp_proceso.Location = new System.Drawing.Point(63, 33);
             this.gp_proceso.Name = "gp_proceso";
             this.gp_proceso.Size = new System.Drawing.Size(246, 69);
             this.gp_proceso.TabIndex = 21;
@@ -128,9 +129,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.chk_procesamiento);
-            this.groupBox1.Location = new System.Drawing.Point(496, 29);
+            this.groupBox1.Location = new System.Drawing.Point(328, 34);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(246, 69);
+            this.groupBox1.Size = new System.Drawing.Size(355, 69);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Procesamiento";
@@ -138,7 +139,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.chk_riesgo);
-            this.groupBox2.Location = new System.Drawing.Point(410, 400);
+            this.groupBox2.Location = new System.Drawing.Point(411, 327);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(119, 69);
             this.groupBox2.TabIndex = 23;
@@ -147,7 +148,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(626, 120);
+            this.button1.Location = new System.Drawing.Point(708, 63);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 24;
@@ -157,7 +158,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(734, 120);
+            this.button2.Location = new System.Drawing.Point(816, 63);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 25;
@@ -168,16 +169,17 @@
             // dtg_evento
             // 
             this.dtg_evento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtg_evento.Location = new System.Drawing.Point(59, 491);
+            this.dtg_evento.Location = new System.Drawing.Point(63, 412);
             this.dtg_evento.Name = "dtg_evento";
             this.dtg_evento.Size = new System.Drawing.Size(866, 203);
             this.dtg_evento.TabIndex = 26;
+            this.dtg_evento.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_evento_CellContentClick);
             // 
             // FormBuscar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 749);
+            this.ClientSize = new System.Drawing.Size(1035, 648);
             this.Controls.Add(this.dtg_evento);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -190,6 +192,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "FormBuscar";
             this.Text = "FormBuscar";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormBuscar_FormClosed);
             this.Load += new System.EventHandler(this.FormBuscar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_actividad)).EndInit();
             this.gp_proceso.ResumeLayout(false);

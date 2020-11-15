@@ -75,6 +75,7 @@
             // txt_actividad
             // 
             this.txt_actividad.Location = new System.Drawing.Point(749, 58);
+            this.txt_actividad.MaxLength = 100;
             this.txt_actividad.Multiline = true;
             this.txt_actividad.Name = "txt_actividad";
             this.txt_actividad.Size = new System.Drawing.Size(274, 123);
@@ -84,6 +85,7 @@
             // txt_evento
             // 
             this.txt_evento.Location = new System.Drawing.Point(47, 300);
+            this.txt_evento.MaxLength = 100;
             this.txt_evento.Multiline = true;
             this.txt_evento.Name = "txt_evento";
             this.txt_evento.Size = new System.Drawing.Size(274, 123);
@@ -94,6 +96,7 @@
             // txt_consecuencias
             // 
             this.txt_consecuencias.Location = new System.Drawing.Point(749, 300);
+            this.txt_consecuencias.MaxLength = 100;
             this.txt_consecuencias.Multiline = true;
             this.txt_consecuencias.Name = "txt_consecuencias";
             this.txt_consecuencias.Size = new System.Drawing.Size(274, 123);
@@ -104,6 +107,7 @@
             // txt_causas
             // 
             this.txt_causas.Location = new System.Drawing.Point(398, 300);
+            this.txt_causas.MaxLength = 100;
             this.txt_causas.Multiline = true;
             this.txt_causas.Name = "txt_causas";
             this.txt_causas.Size = new System.Drawing.Size(274, 123);
@@ -273,6 +277,7 @@
             // txt_indicador
             // 
             this.txt_indicador.Location = new System.Drawing.Point(47, 483);
+            this.txt_indicador.MaxLength = 100;
             this.txt_indicador.Multiline = true;
             this.txt_indicador.Name = "txt_indicador";
             this.txt_indicador.Size = new System.Drawing.Size(164, 79);
@@ -293,6 +298,7 @@
             // txt_fuente
             // 
             this.txt_fuente.Location = new System.Drawing.Point(246, 483);
+            this.txt_fuente.MaxLength = 100;
             this.txt_fuente.Multiline = true;
             this.txt_fuente.Name = "txt_fuente";
             this.txt_fuente.Size = new System.Drawing.Size(164, 79);
@@ -313,6 +319,7 @@
             // txt_propuesta
             // 
             this.txt_propuesta.Location = new System.Drawing.Point(435, 483);
+            this.txt_propuesta.MaxLength = 100;
             this.txt_propuesta.Multiline = true;
             this.txt_propuesta.Name = "txt_propuesta";
             this.txt_propuesta.Size = new System.Drawing.Size(274, 123);
@@ -344,7 +351,7 @@
             // dtg_actividad
             // 
             this.dtg_actividad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtg_actividad.Location = new System.Drawing.Point(33, 311);
+            this.dtg_actividad.Location = new System.Drawing.Point(34, 310);
             this.dtg_actividad.Name = "dtg_actividad";
             this.dtg_actividad.Size = new System.Drawing.Size(1005, 241);
             this.dtg_actividad.TabIndex = 30;
@@ -385,6 +392,8 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "FormMatriz";
             this.Text = "FormMatriz";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMatriz_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMatriz_FormClosed);
             this.Load += new System.EventHandler(this.FormMatriz_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtg_actividad)).EndInit();

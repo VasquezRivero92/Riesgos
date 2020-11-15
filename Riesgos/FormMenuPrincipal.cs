@@ -21,20 +21,27 @@ namespace Riesgos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            
             FormMatriz promo = new FormMatriz();
             promo.Text = FormLogin.nom_usuario;
             promo.StartPosition = FormStartPosition.CenterScreen;
-            promo.ShowDialog();
+            promo.Show();
+            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            
             FormBuscar promo = new FormBuscar();
             promo.Text = FormLogin.nom_usuario;
             promo.StartPosition = FormStartPosition.CenterScreen;
-            promo.ShowDialog();
+            promo.Show();
+            this.Hide();
+        }
+
+        private void FormMenuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void FormMenuPrincipal_Load(object sender, EventArgs e)
